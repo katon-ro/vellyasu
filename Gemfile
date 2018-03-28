@@ -55,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #devise
 gem 'devise', git: 'git@github.com:plataformatec/devise.git', branch: "master"
+
+#jquery
+gem 'jquery-rails'
