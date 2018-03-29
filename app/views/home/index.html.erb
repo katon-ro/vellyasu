@@ -1,5 +1,7 @@
 <h1>打刻</h1>
-<p><%= current_user.username %></p>
+<% if user_signed_in? %>
+    <p><%= current_user.username %></p>
+ <%end%>
 <p id ="time"></p>
 <script type="text/javascript">
     $(function(){
@@ -15,3 +17,8 @@
         $('#time').text(y + '年' + m + '月' + d + '日' + '(' + wd[w] + ')'+ h + '時' + mi + '分' + s + '秒' );
         });
 </script>
+
+<% if user_signed_in? %>
+    <p><%= link_to "出勤", start_work_path, method: :post %></p>
+    <p><%= link_to "退勤", end_work_path, method: :patch %></p>
+<% end %>

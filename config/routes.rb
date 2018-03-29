@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'home/index'
-  get 'home/show'
-  
-  root to: "home#show"
+  post 'start_work', to: 'home#start_work'
+  patch 'end_work', to: 'home#end_work'
+
+  root to: "home#index"
 
   devise_for :users
   
