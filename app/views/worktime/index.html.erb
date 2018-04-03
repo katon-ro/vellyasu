@@ -1,0 +1,45 @@
+<p1>出勤一覧</p1>
+
+<table border = "1">
+  <tr>
+    <th>出勤時間</th>
+    <th>退勤時間</th>
+    <th>休憩開始時間</th>
+    <th>休憩終了時間</th>
+  </tr>
+  <% @work.each do |user| %>
+    <% if current_user.username == user.username %>
+      <tr>
+        <td>
+          <% if user.str_time.nil? %>
+            <%= user.str_time %>
+          <% else %>
+            <%= user.str_time.strftime('%R') %>
+          <% end %>        </td>
+
+        <td>
+         <% if user.end_time.nil? %>
+           <%= user.end_time %>
+         <% else %>
+           <%= user.end_time.strftime('%R') %>
+         <% end %>
+        </td>
+
+        <td>
+          <% if user.start_breaktime.nil? %>
+            <%= user.start_breaktime %>
+          <% else %>
+            <%= user.start_breaktime.strftime('%R') %>
+          <% end %>
+        </td>
+        <td>
+          <% if user.end_breaktime.nil?%>
+            <%= user.end_breaktime %>
+           <%else%>
+            <%= user.end_breaktime.strftime('%R') %>
+          <%end%>
+        </td>
+      </tr>
+   <%end%>
+  <% end %>
+</table>

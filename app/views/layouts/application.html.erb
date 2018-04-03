@@ -12,8 +12,14 @@
     <header>
         <nav>
             <% if user_signed_in? %>
-                <%= link_to 'プロフィール変更', edit_user_registration_path %> |
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+              <%= link_to 'プロフィール変更', edit_user_registration_path %> |
+              <% if request.path == '/worktime/index'%>
+                <%= link_to '打刻', root_path%>
+              <%else%>
+                <%= link_to '出勤一覧', worktime_index_path %>
+             <% end %>
+             | <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+
             <% else %>
                 <%= link_to 'サインイン', new_user_registration_path %> |
                 <%= link_to 'ログイン', new_user_session_path %>

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   post 'start_work', to: 'home#start_work'
   patch 'end_work', to: 'home#end_work'
+  patch 'start_breaktime', to: 'home#start_breaktime'
+  patch 'end_breaktime', to: 'home#end_breaktime'
+  get 'worktime/index'
 
   root to: "home#index"
 
