@@ -5,10 +5,10 @@
       <ul class="nav navbar-nav navbar-left">
        <% if user_signed_in? %>
          <li><%= link_to 'プロフィール変更', edit_user_registration_path %> </li>
-         <% if request.path == '/worktimes/index'%>
+         <% if request.path == '/worktimes'%>
             <li><%= link_to '打刻', root_path%> </li>
           <%else%>
-            <li><%= link_to '出勤一覧', worktimes_index_path %> </li>
+            <li><%= link_to '出勤一覧', worktimes_path %> </li>
          <% end %>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %> </li>
         <% else %>

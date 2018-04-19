@@ -19,13 +19,20 @@
         }, 1000);
     });
 </script>
-<footer>
-  <nav>
-    <% if user_signed_in? %>
-     <%= link_to "出勤", start_work_path, method: :post %> |
-     <%= link_to "退勤", end_work_path, method: :patch %> |
-     <%= link_to "休憩開始", start_breaktime_path, method: :patch %> |
-     <%= link_to "休憩終了", end_breaktime_path, method: :patch %>
-    <% end %>
-  </nav>
-</footer>
+<nav>
+  <% if user_signed_in? %>
+    <div class="btn btn-default">
+      <%= link_to "出勤", start_work_path, method: :post %>
+    </div>
+    <div class="btn btn-default">
+      <%= link_to "退勤", end_work_path, method: :patch %>
+    </div>
+    <div class="btn btn-default">
+      <%= link_to "休憩開始", start_breaktime_path, method: :patch %>
+    </div>
+    <div class="btn btn-default">
+      <%= link_to "休憩終了", end_breaktime_path, method: :patch %>
+    </div>
+  <% end %>
+</nav>
+

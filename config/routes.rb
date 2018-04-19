@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   patch 'end_work', to: 'home#end_work'
   patch 'start_breaktime', to: 'home#start_breaktime'
   patch 'end_breaktime', to: 'home#end_breaktime'
-  resources :worktimes
-
+  resources :worktimes, controller: :worktime
   root to: "home#index"
   devise_for :users
   

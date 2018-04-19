@@ -1,56 +1,60 @@
 <p1>出勤一覧</p1>
 
-<table border = "1">
-  <tr>
-    <th>日付</th>
-    <th>出勤時間</th>
-    <th>退勤時間</th>
-    <th>休憩開始時間</th>
-    <th>休憩終了時間</th>
-  </tr>
-  <% @works.each do |work| %>
-    <% if current_user.username == work.username %>
-      <tr>
-        <td>
-          <% if work.str_time.nil? %>
-            <%= work.str_time %>
-          <% else %>
-            <%= work.str_time.strftime('%d') %>
-          <% end %>
-          <%= link_to "編集", worktime_edit_path(work) %>
-        </td>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>日付</th>
+      <th>出勤時間</th>
+      <th>退勤時間</th>
+      <th>休憩開始時間</th>
+      <th>休憩終了時間</th>
+    </tr>
+  </thead>
+  <% @works.each do |works| %>
+    <% if current_user.username == works.username %>
+      <tbody>
+       <tr>
+          <td>
+            <% if works.str_time.nil? %>
+              <%= works.str_time %>
+           <% else %>
+             <%= works.str_time.strftime('%d') %>
+           <% end %>
+           <%= link_to "編集", edit_worktime_path(works) %>
+          </td>
 
-        <td>
-          <% if work.str_time.nil? %>
-            <%= work.str_time %>
-          <% else %>
-            <%= work.str_time.strftime('%R') %>
-          <% end %>
-        </td>
+          <td>
+           <% if works.str_time.nil? %>
+             <%= works.str_time %>
+           <% else %>
+             <%= works.str_time.strftime('%R') %>
+           <% end %>
+          </td>
 
-        <td>
-         <% if work.end_time.nil? %>
-           <%= work.end_time %>
-         <% else %>
-           <%= work.end_time.strftime('%R') %>
-         <% end %>
-        </td>
+          <td>
+           <% if works.end_time.nil? %>
+             <%= works.end_time %>
+           <% else %>
+             <%= works.end_time.strftime('%R') %>
+           <% end %>
+          </td>
 
-        <td>
-          <% if work.start_breaktime.nil? %>
-            <%= work.start_breaktime %>
-          <% else %>
-            <%= work.start_breaktime.strftime('%R') %>
-          <% end %>
-        </td>
-        <td>
-          <% if work.end_breaktime.nil?%>
-            <%= work.end_breaktime %>
-           <%else%>
-            <%= work.end_breaktime.strftime('%R') %>
-          <%end%>
-        </td>
-      </tr>
-   <%end%>
+          <td>
+           <% if works.start_breaktime.nil? %>
+             <%= works.start_breaktime %>
+           <% else %>
+              <%= works.start_breaktime.strftime('%R') %>
+           <% end %>
+          </td>
+          <td>
+           <% if works.end_breaktime.nil?%>
+             <%= works.end_breaktime %>
+            <%else%>
+             <%= works.end_breaktime.strftime('%R') %>
+           <%end%>
+         </td>
+       </tr>
+      </tbody>
+    <%end%>
   <% end %>
 </table>
