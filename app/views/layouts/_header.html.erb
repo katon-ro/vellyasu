@@ -1,0 +1,22 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "vellyasu", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-left">
+       <% if user_signed_in? %>
+         <li><%= link_to 'プロフィール変更', edit_user_registration_path %> </li>
+         <% if request.path == '/worktimes/index'%>
+            <li><%= link_to '打刻', root_path%> </li>
+          <%else%>
+            <li><%= link_to '出勤一覧', worktimes_index_path %> </li>
+         <% end %>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %> </li>
+        <% else %>
+         <li><%= link_to 'アカウント作成', new_user_registration_path %> </li>
+         <li> <%= link_to 'ログイン', new_user_session_path %> </li>
+      <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
+

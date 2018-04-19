@@ -1,6 +1,6 @@
 <h1>打刻</h1>
 <% if user_signed_in? %>
-    <p><%= current_user.username %></p>
+    <p>ユーザー名：<%= current_user.username %></p>
  <%end%>
 <p id ="time"></p>
 <script type="text/javascript">
@@ -19,10 +19,13 @@
         }, 1000);
     });
 </script>
-
-<% if user_signed_in? %>
-    <p><%= link_to "出勤", start_work_path, method: :post %></p>
-    <p><%= link_to "退勤", end_work_path, method: :patch %></p>
-    <p><%= link_to "休憩開始", start_breaktime_path, method: :patch %></p>
-    <p><%= link_to "休憩終了", end_breaktime_path, method: :patch %></p>
-<% end %>
+<footer>
+  <nav>
+    <% if user_signed_in? %>
+     <%= link_to "出勤", start_work_path, method: :post %> |
+     <%= link_to "退勤", end_work_path, method: :patch %> |
+     <%= link_to "休憩開始", start_breaktime_path, method: :patch %> |
+     <%= link_to "休憩終了", end_breaktime_path, method: :patch %>
+    <% end %>
+  </nav>
+</footer>

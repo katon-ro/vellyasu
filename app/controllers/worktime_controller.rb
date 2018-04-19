@@ -1,7 +1,10 @@
 class WorktimeController < ApplicationController
 
   def index
-    @work = Worktime.all
+    @works = Worktime.all
   end
 
+  def edit
+    @day = Worktime.find(params[:id])
+  end
 end

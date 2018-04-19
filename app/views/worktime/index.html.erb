@@ -2,41 +2,52 @@
 
 <table border = "1">
   <tr>
+    <th>日付</th>
     <th>出勤時間</th>
     <th>退勤時間</th>
     <th>休憩開始時間</th>
     <th>休憩終了時間</th>
   </tr>
-  <% @work.each do |user| %>
-    <% if current_user.username == user.username %>
+  <% @works.each do |work| %>
+    <% if current_user.username == work.username %>
       <tr>
         <td>
-          <% if user.str_time.nil? %>
-            <%= user.str_time %>
+          <% if work.str_time.nil? %>
+            <%= work.str_time %>
           <% else %>
-            <%= user.str_time.strftime('%R') %>
-          <% end %>        </td>
+            <%= work.str_time.strftime('%d') %>
+          <% end %>
+          <%= link_to "編集", worktime_edit_path(work) %>
+        </td>
 
         <td>
-         <% if user.end_time.nil? %>
-           <%= user.end_time %>
+          <% if work.str_time.nil? %>
+            <%= work.str_time %>
+          <% else %>
+            <%= work.str_time.strftime('%R') %>
+          <% end %>
+        </td>
+
+        <td>
+         <% if work.end_time.nil? %>
+           <%= work.end_time %>
          <% else %>
-           <%= user.end_time.strftime('%R') %>
+           <%= work.end_time.strftime('%R') %>
          <% end %>
         </td>
 
         <td>
-          <% if user.start_breaktime.nil? %>
-            <%= user.start_breaktime %>
+          <% if work.start_breaktime.nil? %>
+            <%= work.start_breaktime %>
           <% else %>
-            <%= user.start_breaktime.strftime('%R') %>
+            <%= work.start_breaktime.strftime('%R') %>
           <% end %>
         </td>
         <td>
-          <% if user.end_breaktime.nil?%>
-            <%= user.end_breaktime %>
+          <% if work.end_breaktime.nil?%>
+            <%= work.end_breaktime %>
            <%else%>
-            <%= user.end_breaktime.strftime('%R') %>
+            <%= work.end_breaktime.strftime('%R') %>
           <%end%>
         </td>
       </tr>
