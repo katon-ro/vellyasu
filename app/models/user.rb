@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-    
+  has_many :Worktime, foreign_key: "username",
+      dependent: :destroy
   attr_accessor :login
   
   # Include default devise modules. Others available are:

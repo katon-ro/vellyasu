@@ -1,0 +1,45 @@
+<p1>出勤日<%=  @day.str_time.strftime('%d') %>日の編集</p1>
+
+<%= form_for(@day) do |d| %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+      <td></td>
+       <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+       <td>ユーザー名</td>
+       <td><%= @day.username %></td>
+      </tr>
+      <tr>
+       <td><%= d.label :str_time, "日付"%></td>
+       <td><%= @day.str_time.strftime('%D')%></td>
+      </tr>
+      <tr>
+       <td><%= d.label :work, "勤務区分" %></td>
+       <td><%= d.select :work, { "出勤" => "true", "欠勤" => "false"} %></td>
+      </tr>
+      <tr>
+        <td><%= d.label :str_time, "出勤時刻" %></td>
+        <td><%= d.time_select :str_time, default: @day.str_time.strftime('%H%M'), :minute_step => 1 %></td>
+      </tr>
+      <tr>
+       <td><%= d.label :end_time, "退勤時刻" %></td>
+       <td><%= d.time_select :end_time, default: @day.end_time.strftime('%H%M'), :minute_step => 1 %></td>
+      </tr>
+     <tr>
+       <td><%= d.label :start_breaktime, "休憩時間" %></td>
+       <td><%= d.time_select :start_breaktime, default: @day.start_breaktime.strftime('%H%M'), :minute_step => 1 %>〜
+        <%= d.time_select :end_breaktime, default: @day.end_breaktime.strftime('%H%M'), :minute_step => 1 %></td>
+     </tr>
+      <tr>
+       <td><%= d.label :active, "承認" %></td>
+       <td><%= d.select :active, { "申請済み" => "true", "未申請" => "false"} %></td>
+      </tr>
+    </tbody>
+</table>
+<%= d.submit "編集"%>
+
+<% end %>
