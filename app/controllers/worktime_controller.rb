@@ -1,7 +1,11 @@
 class WorktimeController < ApplicationController
 
   def index
-    @works = Worktime.all
+
+    @select_month = Time.now
+    start_day = @select_month.beginning_of_month
+    end_day = @select_month.end_of_month
+    @works = Worktime.where(str_time: start_day..end_day).all
   end
 
   def edit
@@ -27,7 +31,6 @@ class WorktimeController < ApplicationController
   def day_params
     params.require(:worktime).permit(:work, :str_time, :end_time, :start_breaktime,
                                  :end_breaktime, :active)
-
   end
 
 end

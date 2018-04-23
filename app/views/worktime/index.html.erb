@@ -1,5 +1,6 @@
 <p1>出勤一覧</p1>
 
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -19,7 +20,7 @@
             <% if works.str_time.nil? %>
               <%= works.str_time %>
             <% else %>
-             <%= works.str_time.strftime('%d') %>
+             <%= works.str_time.strftime('%m%d') %>
             <% end %>
             <%= link_to "編集", edit_worktime_path(works) %>
           </td>
