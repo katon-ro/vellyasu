@@ -21,8 +21,8 @@
         <td><%= d.time_select :str_time, default: @day.str_time.strftime('%H%M'), :minute_step => 1 %></td>
       </tr>
       <tr>
-       <td><%= d.label :end_time, "退勤時刻" %></td>
-       <td><%= d.time_select :end_time, default: @day.end_time.strftime('%H%M'), :minute_step => 1 %></td>
+        <td><%= d.label :end_time, "退勤時刻" %></td>
+        <td><%= d.time_select :end_time, :minute_step => 1 ,include_blank: :true%></td>
       </tr>
      <tr>
        <td><%= d.label :start_breaktime, "休憩時間" %></td>
