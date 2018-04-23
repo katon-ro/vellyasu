@@ -7,6 +7,7 @@ class WorktimeController < ApplicationController
   def edit
     @day = Worktime.find(params[:id])
   end
+
   def update
     @day = Worktime.find(params[:id])
     if @day.update_attributes(day_params)
@@ -15,6 +16,11 @@ class WorktimeController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    Worktime.find(params[:id]).destroy
+    render 'index'
   end
 
   private

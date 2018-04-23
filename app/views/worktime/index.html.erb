@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>日付</th>
+      <th>勤務区分</th>
       <th>出勤時間</th>
       <th>退勤時間</th>
       <th>休憩開始時間</th>
@@ -17,12 +18,18 @@
           <td>
             <% if works.str_time.nil? %>
               <%= works.str_time %>
-           <% else %>
+            <% else %>
              <%= works.str_time.strftime('%d') %>
-           <% end %>
-           <%= link_to "編集", edit_worktime_path(works) %>
+            <% end %>
+            <%= link_to "編集", edit_worktime_path(works) %>
           </td>
-
+          <td>
+            <% if works.work.nil? %>
+              <h2>欠勤</h2>
+            <% else %>
+              <h2>出勤</h2>
+            <% end %>
+          </td>
           <td>
            <% if works.str_time.nil? %>
              <%= works.str_time %>

@@ -2,12 +2,7 @@
 
 <%= form_for(@day) do |d| %>
   <table class="table table-striped">
-    <thead>
-      <tr>
-      <td></td>
-       <td></td>
-      </tr>
-    </thead>
+
     <tbody>
       <tr>
        <td>ユーザー名</td>
@@ -31,15 +26,18 @@
       </tr>
      <tr>
        <td><%= d.label :start_breaktime, "休憩時間" %></td>
-       <td><%= d.time_select :start_breaktime, default: @day.start_breaktime.strftime('%H%M'), :minute_step => 1 %>〜
-        <%= d.time_select :end_breaktime, default: @day.end_breaktime.strftime('%H%M'), :minute_step => 1 %></td>
+       <td><%= d.time_select :start_breaktime, default: @day.start_breaktime.strftime('%H%M') %>〜
+        <%= d.time_select :end_breaktime, default: @day.end_breaktime.strftime('%H%M') %></td>
      </tr>
       <tr>
        <td><%= d.label :active, "承認" %></td>
        <td><%= d.select :active, { "申請済み" => "true", "未申請" => "false"} %></td>
       </tr>
     </tbody>
-</table>
-<%= d.submit "編集"%>
+  </table>
+  <%= link_to "戻る", :back %>
+  <%= link_to "削除", @day, method: :delete%>
+  <%= d.submit "編集" %>
+
 
 <% end %>

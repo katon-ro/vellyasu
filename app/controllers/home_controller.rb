@@ -1,12 +1,11 @@
 class HomeController < ApplicationController
 
   def index
-        
   end
 
   def start_work
     @time = Worktime.create(username: current_user.username, str_time: Time.now,
-                            start_breaktime: Time.now.since(2.hour), end_breaktime: Time.now.since(3.hour))
+                            start_breaktime: Time.now.since(2.hour), end_breaktime: Time.now.since(3.hour), work: :true)
     redirect_to :root
   end
 
@@ -30,8 +29,9 @@ class HomeController < ApplicationController
 
   private
   def time_params
-    params.require(:Worktime).permit(:username, :str_time,:end_time,
-                                     :start_breaktime, :end_breaktime)
+    params.require(:worktime).permit(:work, :str_time, :end_time, :start_breaktime,
+                                     :end_breaktime, :active)
+
   end
 
 
