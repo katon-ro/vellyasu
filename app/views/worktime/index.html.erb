@@ -1,6 +1,11 @@
 <p1>出勤一覧</p1>
-
-
+</br>
+<%start_month = Time.now.months_ago(6)%>
+<%= link_to "⇦", worktimes_path(month: @select_month.prev_month) %>
+<% 1.upto 12 do |m|%>
+  <p><%= start_month.months_since(m).strftime('%Y年%m月度')%></p>
+<% end%>
+<%= link_to "⇨", worktimes_path(month: @select_month.next_month) %>
 <table class="table table-striped">
   <thead>
     <tr>

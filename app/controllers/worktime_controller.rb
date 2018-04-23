@@ -1,8 +1,11 @@
 class WorktimeController < ApplicationController
 
   def index
-
-    @select_month = Time.now
+    if params[:month].nil?
+      @select_month = Time.now
+    else
+      @select_month = Time.mktime(params[:month].to_i)
+    end
     start_day = @select_month.beginning_of_month
     end_day = @select_month.end_of_month
     @works = Worktime.where(str_time: start_day..end_day).all
